@@ -16,6 +16,8 @@ const SimpleInput = (props) => {
 
     const enteredValue = nameInputRef.current.value;
     console.log(enteredValue);
+
+    setEnteredName('');
   };
 
     return (
@@ -27,6 +29,7 @@ const SimpleInput = (props) => {
             id='name'
             onChange={nameInputChangeHandler}
             ref={nameInputRef}
+            value={enteredName}
           />
             </div>
             
