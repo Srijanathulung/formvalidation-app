@@ -1,6 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 
 const SimpleInput = (props) => {
+
+  const nameInputRef = useRef();
 
   const [enteredName, setEnteredName]=useState('')
 
@@ -11,8 +13,11 @@ const SimpleInput = (props) => {
   const formSubmissionHandler = event => {
     event.preventDefault();
     console.log(enteredName);
+
+    const enteredValue = nameInputRef.current.value;
+    console.log(enteredValue);
   };
-  
+
     return (
       <form onSubmit={formSubmissionHandler}>
         <div className='form-control'>
@@ -21,6 +26,7 @@ const SimpleInput = (props) => {
             type='text'
             id='name'
             onChange={nameInputChangeHandler}
+            ref={nameInputRef}
           />
             </div>
             
