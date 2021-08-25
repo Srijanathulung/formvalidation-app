@@ -1,43 +1,42 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useState} from 'react';
 
 const SimpleInput = (props) => {
 
-  const nameInputRef = useRef();
+  // const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState('')
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
-  const [enteredNameConfirmed, setEnteredNameConfirmed] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
-  useEffect(() => {
-    if (enteredNameIsValid) {
-      console.log('Name Input is valid!');
-    }
-  },[enteredNameIsValid])
+  const enteredNameIsValid = enteredName.trim() !== '';
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
   
 
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value);
   };
 
+  const nameInputBlurHandler = event => {
+    setEnteredNameTouched(true);
+  
+  };
+
   const formSubmissionHandler = event => {
     event.preventDefault();
     console.log(enteredName);
 
-    setEnteredNameConfirmed(true);
+    setEnteredNameTouched(true);
 
-    if (enteredName.trim() == '') {
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid) {
       return;
     };
 
-    setEnteredNameIsValid(true);
 
-    const enteredValue = nameInputRef.current.value;
-    console.log(enteredValue);
+    // const enteredValue = nameInputRef.current.value;
+    // console.log(enteredValue);
 
     setEnteredName('');
+    setEnteredNameTouched(false);
   };
 
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameConfirmed;
   //this is for css(making dynamic)
   const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control ';
 
@@ -49,7 +48,8 @@ const SimpleInput = (props) => {
             type='text'
             id='name'
             onChange={nameInputChangeHandler}
-            ref={nameInputRef}
+            onBlur={nameInputBlurHandler}
+            // ref={nameInputRef}
             value={enteredName}
           />
           {nameInputIsInvalid && (
