@@ -1,6 +1,11 @@
+
 const Basicform = () => {
+  const formSubmissionHandler = event => {
+    event.preventDefault();
+  };
+
     return (
-        <form>
+        <form onSubmit={formSubmissionHandler}>
           <div className='control-group'>
         <div className='form-control'>
           <label htmlFor='name'>First Name</label>
