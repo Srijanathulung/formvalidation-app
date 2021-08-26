@@ -3,6 +3,7 @@ const useInput = (validateValue) => {
 
     const [enteredValue, setEnteredValue] = useState('');//enteredValue is passed to the SimpleInputComponent as the value of useInput value i.e(useInput(value=>value.trim()!==''))
     const [isTouched, setIsTouched] = useState(false);
+
     
     const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
