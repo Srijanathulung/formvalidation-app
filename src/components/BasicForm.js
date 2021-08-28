@@ -3,10 +3,24 @@ import { useState } from 'react';
 const Basicform = () => {
   const [enteredName, setEnteredName] = useState('');
   const [enterNameTouched, setEnteredNameTouch] = useState(false);
+  // const [formIsValid, setFormIsValid] = useState(false);
 
   const enterNameIsValid = enteredName.trim() !== '';
   const nameInputIsInvalid = !enterNameIsValid && enterNameTouched;
 
+  // useEffect(() => {
+  //   if (enterNameIsValid) {
+  //     setFormIsValid(true);
+  //   } else {
+  //     setFormIsValid(false);
+  //   }
+  // }, [enterNameIsValid]);
+
+  let formIsValid = false;
+
+    if (enterNameIsValid) {
+      formIsValid = true;
+    } 
 
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value);
@@ -26,7 +40,6 @@ const Basicform = () => {
       return;
     }
 
-     
 
     setEnteredName('');
     setEnteredNameTouch(false);
@@ -61,7 +74,7 @@ const Basicform = () => {
             </div>
             
             <div className='form-actions'>
-        <button>Submit</button>
+        <button disabled={!formIsValid}>Submit</button>
       </div>
         </form>
     )
