@@ -2,11 +2,17 @@ import { useState } from 'react';
 
 const Basicform = () => {
   const [enteredName, setEnteredName] = useState('');
+  const [enteredLastName, setEnteredLastName] = useState('');
+
   const [enterNameTouched, setEnteredNameTouch] = useState(false);
+  const [enterLastNameTouched, setEnteredLastNameTouch] = useState(false);
   // const [formIsValid, setFormIsValid] = useState(false);
 
   const enterNameIsValid = enteredName.trim() !== '';
   const nameInputIsInvalid = !enterNameIsValid && enterNameTouched;
+
+  const enterLastNameIsValid = enteredLastName.trim() !== '';
+  const lastNameInputIsInvalid = !enterLastNameIsValid && enterLastNameTouched;
 
   // useEffect(() => {
   //   if (enterNameIsValid) {
@@ -18,7 +24,7 @@ const Basicform = () => {
 
   let formIsValid = false;
 
-    if (enterNameIsValid) {
+    if (enterNameIsValid && enterLastNameIsValid) {
       formIsValid = true;
     } 
 
@@ -28,6 +34,14 @@ const Basicform = () => {
 
   const nameInputBlurHandler = () => {
     setEnteredNameTouch(true);
+  };
+  
+  const lastNameChangeHandler = event => {
+    setEnteredLastName(event.target.value);
+  };
+
+  const lastNameInputBlurHandler = () => {
+    setEnteredLastNameTouch(true);
    };
 
   const formSubmissionHandler = event => {
@@ -43,6 +57,8 @@ const Basicform = () => {
 
     setEnteredName('');
     setEnteredNameTouch(false);
+    setEnteredLastName('');
+    setEnteredLastNameTouch(false);
     // console.log(enteredName);
   };
 
@@ -60,11 +76,17 @@ const Basicform = () => {
               onBlur={nameInputBlurHandler}
               value={enteredName}
             />
-          {nameInputIsInvalid && <p className='error-text'>Name must not be empty</p>}
+          {nameInputIsInvalid && <p className='error-text'>LastName must not be empty</p>}
         </div>
         <div className='form-control'>
           <label htmlFor='name'>Last Name</label>
-          <input type='text' id='name' />
+            <input
+              type='text'
+              id='name'
+              onChange={lastNameChangeHandler}
+              onBlur={lastNameInputBlurHandler}
+              value={enteredLastName} />
+             {lastNameInputIsInvalid && <p className='error-text'>LastName must not be empty</p>}
         </div>
             </div>
             
