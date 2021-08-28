@@ -57,6 +57,7 @@ const Basicform = () => {
 
     setEnteredName('');
     setEnteredNameTouch(false);
+    
     setEnteredLastName('');
     setEnteredLastNameTouch(false);
     // console.log(enteredName);
