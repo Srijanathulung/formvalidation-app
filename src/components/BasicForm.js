@@ -4,10 +4,14 @@ const Basicform = () => {
   const [enteredName, setEnteredName] = useState('');
   const [enterNameTouched, setEnteredNameTouch] = useState(false);
 
+  const enterNameIsValid = enteredName.trim() !== '';
+  const nameInputIsInvalid = !enterNameIsValid && enterNameTouched;
+
 
   const nameInputChangeHandler = event => {
     setEnteredName(event.target.value);
   };
+
   const nameInputBlurHandler = () => {
     setEnteredNameTouch(true);
    };
@@ -15,17 +19,26 @@ const Basicform = () => {
   const formSubmissionHandler = event => {
     event.preventDefault();
     console.log(enteredName);
-    if (enteredName.trim() == '') {
+
+    setEnteredNameTouch(true);
+
+    if (!enterNameIsValid) {
       return;
     }
+
+     
+
     setEnteredName('');
-    console.log(enteredName);
+    setEnteredNameTouch(false);
+    // console.log(enteredName);
   };
 
+  const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control ';
+  
     return (
         <form onSubmit={formSubmissionHandler}>
           <div className='control-group'>
-        <div className='form-control'>
+        <div className={nameInputClasses}>
           <label htmlFor='name'>First Name</label>
             <input
               type='text'
@@ -34,7 +47,7 @@ const Basicform = () => {
               onBlur={nameInputBlurHandler}
               value={enteredName}
             />
-          
+          {nameInputIsInvalid && <p className='error-text'>Name must not be empty</p>}
         </div>
         <div className='form-control'>
           <label htmlFor='name'>Last Name</label>
