@@ -2,10 +2,7 @@ import { useState } from 'react';
 import useInput from '../hooksOfBasicForm/use-input';
 
 
-const Basicform = ProxyTypeSet => {
-
-  
-  
+const Basicform = props => {
 
 
   const [enteredName, setEnteredName] = useState('');
