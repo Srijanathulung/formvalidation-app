@@ -1,7 +1,6 @@
 
 import useInput from '../hooksOfBasicForm/use-input';
 
-
 const Basicform = props => {
   const {
     value: enteredName,
@@ -36,24 +35,15 @@ const Basicform = props => {
 
 
   // const [enteredName, setEnteredName] = useState('');
-  // const [enteredLastName, setEnteredLastName] = useState('');
 
   // const [enterNameTouched, setEnteredNameTouch] = useState(false);
-  // const [enterLastNameTouched, setEnteredLastNameTouch] = useState(false);
   // const [formIsValid, setFormIsValid] = useState(false);
 
-  // const [enteredEmail, setEnteredEmail] = useState('');
-  // const [enterEmailTouched, setEnteredEmailTouch] = useState(false);
-
-  // const enterEmailIsValid = enteredEmail.trim().includes('@');
-  // const enterEmailIsInvalid = !enterEmailIsValid && enterEmailTouched;
 
   // const enterNameIsValid = enteredName.trim() !== '';
   // const nameInputIsInvalid = !enterNameIsValid && enterNameTouched;
 
-  // const enterLastNameIsValid = enteredLastName.trim() !== '';
-  // const lastNameInputIsInvalid = !enterLastNameIsValid && enterLastNameTouched;
-
+  
   // useEffect(() => {
   //   if (enterNameIsValid) {
   //     setFormIsValid(true);
@@ -76,21 +66,7 @@ const Basicform = props => {
   //   setEnteredNameTouch(true);
   // };
   
-  // const lastNameChangeHandler = event => {
-  //   setEnteredLastName(event.target.value);
-  // };
-
-  // const lastNameInputBlurHandler = () => {
-  //   setEnteredLastNameTouch(true);
-  // };
   
-  // const emailInputChangeHandler = event => {
-  //   setEnteredEmail(event.target.value);
-  // };
-
-  // const emailInputBlurHandler = () => {
-  //   setEnteredEmailTouch(true);
-  // };
 
   const formSubmissionHandler = event => {
     event.preventDefault();
@@ -102,10 +78,7 @@ const Basicform = props => {
 
     console.log('form is subitted');
     console.log(enteredName,enteredLastName,enteredEmail)
-    // setEnteredNameTouch(true);
-    // setEnteredLastNameTouch(true);
-    // setEnteredEmailTouch(true);
-
+    
 
 
 
@@ -114,9 +87,7 @@ const Basicform = props => {
     resetNameInput();
     
     resetLastNameInput();
-    // setEnteredLastName('');
-    // setEnteredLastNameTouch(false);
-    // console.log(enteredName);
+  
 
     resetEmailInput();
     // setEnteredEmail('');
